@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinder Clone - Свайпы и знакомства</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-fire"></i> Tinder Clone</h1>
+                <div class="header-actions">
+                    <button class="btn-icon" id="refreshBtn" title="Обновить">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <button class="btn-icon" id="matchesBtn" title="Матчи">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Loading -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Загружаем профили...</p>
+            </div>
+
+            <!-- No More Profiles -->
+            <div id="noProfiles" class="no-profiles" style="display: none;">
+                <div class="no-profiles-content">
+                    <i class="fas fa-heart-broken"></i>
+                    <h2>Больше нет профилей</h2>
+                    <p>Попробуйте обновить страницу или зайдите позже</p>
+                    <button class="btn-primary" onclick="loadProfiles()">
+                        <i class="fas fa-redo"></i> Обновить
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card Stack -->
+            <div id="cardStack" class="card-stack">
+                <!-- Cards will be dynamically added here -->
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn-action btn-dislike" id="dislikeBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button class="btn-action btn-superlike" id="superlikeBtn">
+                    <i class="fas fa-star"></i>
+                </button>
+                <button class="btn-action btn-like" id="likeBtn">
+                    <i class="fas fa-heart"></i>
+                </button>
+            </div>
+        </main>
+
+        <!-- Photo Gallery Modal -->
+        <div id="photoModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalProfileName"></h3>
+                    <button class="modal-close" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="photo-gallery">
+                        <div class="photo-container">
+                            <img id="modalPhoto" src="" alt="Фото профиля">
+                        </div>
+                        <div class="photo-indicators" id="photoIndicators">
+                            <!-- Indicators will be added here -->
+                        </div>
+                        <button class="gallery-nav prev" id="prevPhoto">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-nav next" id="nextPhoto">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Match Modal -->
+        <div id="matchModal" class="modal">
+            <div class="modal-content match-modal">
+                <div class="match-content">
+                    <div class="match-animation">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h2>Это матч! 💕</h2>
+                    <p>Вы понравились друг другу!</p>
+                    <div class="match-actions">
+                        <button class="btn-primary" onclick="closeMatchModal()">
+                            Продолжить свайпать
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Matches List Modal -->
+        <div id="matchesModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Ваши матчи</h3>
+                    <button class="modal-close" id="closeMatchesModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="matchesList" class="matches-list">
+                        <!-- Matches will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
